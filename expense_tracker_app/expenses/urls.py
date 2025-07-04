@@ -3,5 +3,5 @@ from .views import expense_list
 
 
 urlpatterns = [
-    path('/expenses/', expense_list, name='users_records'),
+    path('expenses/', expense_list, name='users_records'),
 ]

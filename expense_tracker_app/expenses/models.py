@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Expenses(models.Model):
+class ExpensesIncome(models.Model):
     TRANSACTION_TYPE_CHOICES = [('credit', 'Credit'),('debit', 'Debit')]
     TAX_TYPE_CHOICES = [('flat','Flat'), ('percentage', 'Percentage')]
     user = models.ForeignKey(User, on_delete= models.CASCADE)
