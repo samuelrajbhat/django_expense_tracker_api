@@ -1,0 +1,5 @@
+.venv/
+**/migrations/
+expense_tracker_app/__pycache__/
+__pycache__
+*.sqlite3
