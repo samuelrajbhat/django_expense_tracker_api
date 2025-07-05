@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from authentication.views.root_view import Root
+from authentication.views.root_view import Root, fallback_to_root
 
 urlpatterns = [
     path('', Root.as_view(), name= 'root'),
@@ -24,3 +24,5 @@ urlpatterns = [
     path('auth/',include('authentication.urls')),
     path('api/', include('expenses.urls'))
 ]
+
+
