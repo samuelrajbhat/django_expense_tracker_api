@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from authentication.views.root_view import Root, fallback_to_root
+from authentication.views.root_view import Root
 
 urlpatterns = [
     path('', Root.as_view(), name= 'root'),
