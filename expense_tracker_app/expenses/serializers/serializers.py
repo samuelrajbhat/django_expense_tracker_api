@@ -1,17 +1,18 @@
 from rest_framework import serializers
-from expense_tracker_app.expenses.models import ExpensesIncome
+from expenses.models import ExpensesIncome
 
 class ExpensesIncomeSeralizers( serializers.ModelSerializer):
-    total = serializers.DecimalField(source = 'total', max_digits=12, decimal_places=2)
+    total = serializers.ReadOnlyField()
+    user = serializers.StringRelatedField(read_only=True) 
     class Meta:
         model = ExpensesIncome
         fields = [
-            'is',
+            'id',
             'user',
             'title',
             'description',
-            'amunt',
-            'transaction_atype',
+            'amount',
+            'transaction_type',
             'tax',
             'tax_type',
             'created_at',
@@ -20,6 +21,8 @@ class ExpensesIncomeSeralizers( serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'created_at', 'updated_at', 'total']
 
-        def create(self, validated_data):
-            user = self.context['request'].user # type: ignore
-            return ExpensesIncome.objects.create(user=user, **validated_data)
+    # def create(self, validated_data):
+    #     user = self.context['request'].user # type: ignore
+    #     return ExpensesIncome.objects.create(user=user, **validated_data)
+    
+   

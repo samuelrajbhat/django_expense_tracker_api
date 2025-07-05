@@ -1,1 +1,1 @@
-from .list_expenses_views import expense_list
+from .expenses_views import expenses, expense_detail

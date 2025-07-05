@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import expense_list
+from .views import expenses, expense_detail
 
 
 urlpatterns = [
-    path('expenses/', expense_list, name='users_records'),
+    path('expenses/',expenses, name='expenses'),
+    path('expenses/<int:id>', expense_detail, name='expense-id')
 ]
