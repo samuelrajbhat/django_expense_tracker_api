@@ -16,8 +16,13 @@ from rest_framework.pagination import PageNumberPagination
 def expenses(request):
     user = request.user
     if request.method == 'GET':
-        queryset = ExpensesIncome.objects.filter(user=user).order_by('-created_at')
+        # Implementing super_user features
+        if user.is_superuser:
+            queryset = ExpensesIncome.objects.all().order_by('-created_at')
+        else:
+            queryset = ExpensesIncome.objects.filter(user=user).order_by('-created_at')
         paginator = PageNumberPagination()
+        # Declaree page size
         paginator.page_size = 25
         page = paginator.paginate_queryset(queryset, request)  # Set paginator.page here
         serializer = ExpensesIncomeSeralizers(page, many=True)
